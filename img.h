@@ -25,7 +25,7 @@ struct Imagem {
 struct EnCode
 {
 	enum enconding enc;
-	char enc[1000];
+	char enc[MAX_NOME];
 };
 typedef struct Imagem Imagem;
 typedef struct EnCode Code;
