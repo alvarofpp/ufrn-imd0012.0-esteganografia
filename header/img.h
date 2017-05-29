@@ -1,8 +1,6 @@
-#ifndef img_h
-#define img_h
+#ifndef IMG_H
+#define IMG_H
 
-#define TRUE 1
-#define FALSE 0
 #define MAX_NOME 256 //tamanho máximo do nome do arquivo
 #define MAX 1080 //tamanho máximo da imagem
 //Tratamento da imagem?
