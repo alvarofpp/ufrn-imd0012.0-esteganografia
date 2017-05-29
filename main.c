@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <string.h>
-#include "header/global.h"
-#include "header/arg.h"
+#include "lib/global.h"
+#include "lib/arg/arg.h"
+#include "lib/img/img.h"
 
 int main(int argc, char **argv){
 	imprimirArgv(argc, argv);
 	if((argc == 1) || (strcmp(argv[1], "-h") == 0) || (strcmp(argv[1], "--help") == 0)){
 		help();
 	} else if(verificarArgv(argc, argv)){
-		printf("hue");
+		printf("hue\n");
 	}
 
 	/*

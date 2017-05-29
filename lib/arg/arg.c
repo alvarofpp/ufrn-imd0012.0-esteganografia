@@ -1,6 +1,6 @@
-#ifndef ARG_H
-#define ARG_H
-
+/**
+* Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes
+**/
 void imprimirArgv(int argc, char **argv){
   int i;
   printf("ARGC: %d\n", argc);
@@ -10,6 +10,9 @@ void imprimirArgv(int argc, char **argv){
   printf("\n");
 }
 
+/**
+* Função com mensagem de ajuda.
+**/
 void help(){
   printf("Comandos aceitos:\n");
   printf(" -d               Executa o programa em modo de decodificador (decoder);\n");
@@ -73,7 +76,7 @@ int verificarArgv(int argc, char **argv){
           continue;
         } else {
           printf("Argumento \"%s\" é inválido!\n", argv[i]);
-          printf("Argumentos aceitos de decodificação: \n");
+          printf("Argumentos aceitos de codificação: \n");
           printf(" -f [format]      Indica o formato da imagem.\n");
           printf("                  Valores aceitos: bmp e ppm;\n");
           printf(" -i [input-file]  Indica o arquivo de entrada a ser codificadona imagem;\n");
@@ -93,5 +96,3 @@ int verificarArgv(int argc, char **argv){
     return FALSE;
   }
 }
-
-#endif
