@@ -30,7 +30,7 @@ int reading(Imagem *picture){
 		}
 		else
 			fscanf(arq, "%d %d %d", &picture->l, &picture->c, &picture->mAX);
-			if((*picture).mAX > MAX){//verifica se o arquivo e maior do que deveria
+			if(picture->mAX > MAX){//verifica se o arquivo e maior do que deveria
 				fprintf(stderr, "This archive is bigger than it should! \n");
 				fclose(arq);
 				return FALSE;
