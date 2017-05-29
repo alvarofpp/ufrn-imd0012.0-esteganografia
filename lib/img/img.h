@@ -29,7 +29,7 @@ struct Imagem {
 // Struct para salvar a codificação dentro do arquivo
 struct Encode
 {
-	char nomeArquivo[MAX_NOME]; // Texto do arquivo
+  char nomeArquivo[MAX_NOME]; // Texto do arquivo
   enum enconding enc; // Codificação do arquivo
   int **bytes; // Matriz de bytes
 };
@@ -50,7 +50,7 @@ int reading(Imagem *picture); // Ler arquivos de imagem
 /**
 * Funções de definição de valores
 */
-void defineEnum(char *texto, int *val[3]); // Define o número mágico, extensão e codificação
+int defineEnum(char *texto, int *val[3]); // Define o número mágico, extensão e codificação
 #include "define.c"
 
 #endif
