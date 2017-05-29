@@ -2,7 +2,7 @@
 * Definir o número mágico da imagem.
 * Retorna um valor ENUM magic_number ou 0 (caso não seja de nenhum valor permitido).
 */
-void defineEnum(char *texto, int *val[3]){
+int defineEnum(char *texto, int *val[3]){
 	if(strcmp(texto, "P1") == 0){
 		*val[0] = P1;
 		*val[1] = ASCII;
@@ -28,4 +28,5 @@ void defineEnum(char *texto, int *val[3]){
 		*val[1] = BINARY;
 		*val[2] = PPM;
 	}
+	return FALSE;
 }
