@@ -50,7 +50,7 @@ int reading(Imagem *picture); // Ler arquivos de imagem
 /**
 * Funções de definição de valores
 */
-int defineEnum(char *texto, int *val[3]); // Define o número mágico, extensão e codificação
+void defineEnum(char *texto, int *val[3]); // Define o número mágico, extensão e codificação
 #include "define.c"
 
 #endif
