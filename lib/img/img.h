@@ -13,6 +13,7 @@
 struct PPM {
   int l; // Linhas
   int c; // Colunas
+  int maxColor; // Máximo de valor de cor
   unsigned char **m; // Matriz
   char nomeArquivo[MAX_NOME]; // Nome do arquivo
 };

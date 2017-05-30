@@ -3,6 +3,7 @@
 * Retorna FALSE se deu algo errado e TRUE se deu tudo certo
 */
 int reading(char nomeImagem[MAX_NOME]){
+	PPM ppm;
 	FILE *arq; // Arquivo
 	arq = fopen(nomeImagem, "r"); // Declara ponteiro de imagem
 
