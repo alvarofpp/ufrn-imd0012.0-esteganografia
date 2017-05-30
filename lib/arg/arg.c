@@ -43,7 +43,7 @@ void help(){
 * O primeiro argumento deve ser, obrigatoriamente, ou -e ou -d.
 * Os argumentos -f, -i, -m e -o indicam parametros seguintes.
 **/
-int verificarArgv(int argc, char **argv){
+int validarArgv(int argc, char **argv){
   // Verifica se o primeiro argumento é válido
   if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-e") == 0)){
     // Verifica se a quantidade de argumentos é ideal
