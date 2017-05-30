@@ -1,5 +1,6 @@
 /**
 * Ler e pula as linhas marcadas como comentário
+* FALTA TESTAR
 */
 void lerComentario(FILE *arq){
 	char ver[255];

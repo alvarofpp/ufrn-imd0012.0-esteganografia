@@ -10,10 +10,13 @@ int main(int argc, char **argv){
 	if((argc == 1) || (strcmp(argv[1], "-h") == 0) || (strcmp(argv[1], "--help") == 0)){
 		help();
 	} else if(validarArgv(argc, argv)){
-		int arg;
 		if(strcmp(argv[1], "-d") == 0){
 		} else {
-			validarImagem(argv[argc-1]);
+			if(validarImagem(argv[argc-1])){
+
+			} else {
+				exit(EXIT_SUCCESS);
+			}
 		}
 	}
 
