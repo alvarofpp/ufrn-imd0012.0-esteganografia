@@ -72,7 +72,7 @@ int verificarArgv(int argc, char **argv){
         if((strcmp(argv[i], "-f") == 0) || (strcmp(argv[i], "-i") == 0) || (strcmp(argv[i], "-m") == 0)){
           i++;
           continue;
-        } else if(strcmp(argv[i], "-r") == 0){
+        } else if((strcmp(argv[i], "-r") == 0) || (i = (argc-1))){
           continue;
         } else {
           printf("Argumento \"%s\" é inválido!\n", argv[i]);

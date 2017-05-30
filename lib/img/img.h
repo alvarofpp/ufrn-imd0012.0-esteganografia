@@ -5,52 +5,41 @@
 * Variáveis globais usados para manipulação de imagem
 */
 #define MAX_NOME 256 // Tamanho máximo do nome do arquivo
-#define MAX_TAMANHO 1080 // Tamanho máximo da imagem
-
-/**
-* ENUMs
-*/
-enum magic_number {P1 = 1, P2, P3, P4, P5, P6}; // Número mágico, que indica a extensão e a codificação do arquivo
-enum extensao {PBM = 1, PGM, PPM}; // Extensão do arquivo
-enum enconding {ASCII = 1, BINARY}; // Codificação do arquivo
 
 /**
 * Structs
 */
 // Struct para salvar as informações da imagem
-struct Imagem {
-  enum magic_number mgc; // Número mágico
-  enum extensao ext; // Extensão do arquivo
+struct PPM {
   int l; // Linhas
   int c; // Colunas
-  int **matriz; // Matriz da imagem
+  unsigned char **m; // Matriz
   char nomeArquivo[MAX_NOME]; // Nome do arquivo
-};
-// Struct para salvar a codificação dentro do arquivo
-struct Encode
-{
-  char nomeArquivo[MAX_NOME]; // Texto do arquivo
-  enum enconding enc; // Codificação do arquivo
-  int **bytes; // Matriz de bytes
 };
 
 /**
 * Typedef referente aos structs acima
 */
-typedef struct Imagem Imagem;
-typedef struct Encode Encode;
+typedef struct PPM PPM;
 
 /**
-* Funções de manipulação de imagem
+* Funções dos comandos por argumento
 */
-int hiding(Imagem *picture, Encode *coding); // Esconde a string dentro da imagem
-int reading(Imagem *picture); // Ler arquivos de imagem
-#include "img.c"
+int inputFile(char nomeArquivo[MAX_NOME]); // -i [input-file]
+#include "commands.c"
 
 /**
-* Funções de definição de valores
+* Funções de manipulação/ajuda
 */
-void defineEnum(char *texto, int *val[3]); // Define o número mágico, extensão e codificação
-#include "define.c"
+void lerComentario(FILE *arq); // Pula as linhas comentadas
+int tamanhoNomeArquivo(char nomeArquivo[MAX_NOME], int i);
+int verificarExtensao(char *extensao);
+#include "manipulated.c"
+
+/**
+* Funções de manipulação de PPM
+*/
+int inputFile(char nomeArquivo[MAX_NOME]); // -i [input-file]
+#include "ppm.c"
 
 #endif
