@@ -14,7 +14,7 @@ void lerComentario(FILE *arq){
 /**
 * Retorna o tamanho do nome do arquivo usando recursão
 */
-int tamanhoNomeArquivo(char nomeArquivo[MAX_NOME], int i){
+int tamanhoNomeArquivo(char *nomeArquivo, int i){
 	if(nomeArquivo[i] == '\0'){
 		return 0;
 	}
@@ -28,7 +28,8 @@ int tamanhoNomeArquivo(char nomeArquivo[MAX_NOME], int i){
 int verificarExtensao(char *extensao){
 	if(strcmp(extensao, "ppm") == 0){
 		return 1;
-	} else {
+	} else if (strcmp(extensao, "bmp") == 0) {
 		return 2;
 	}
+	return FALSE;
 }

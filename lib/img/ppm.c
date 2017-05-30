@@ -3,7 +3,6 @@
 * Retorna FALSE se deu algo errado e TRUE se deu tudo certo
 */
 int reading(char nomeImagem[MAX_NOME]){
-	PPM ppm;
 	FILE *arq; // Arquivo
 	arq = fopen(nomeImagem, "r"); // Declara ponteiro de imagem
 
@@ -12,6 +11,9 @@ int reading(char nomeImagem[MAX_NOME]){
 		fprintf(stderr, "Imagem inexistente! \n");
 		return FALSE;
 	}
+
+	// Criar struct para manipulação de PPM
+	PPM ppm;
 
 	// Lê o cabeçalho e verifica se não tem nada fora do normal para a extensão do arquivo
 	char cabecalho[2];

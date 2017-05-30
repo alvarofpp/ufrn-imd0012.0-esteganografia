@@ -15,7 +15,7 @@ struct PPM {
   int c; // Colunas
   int maxColor; // Máximo de valor de cor
   unsigned char **m; // Matriz
-  char nomeArquivo[MAX_NOME]; // Nome do arquivo
+  char *nomeArquivo; // Nome do arquivo
 };
 
 /**
@@ -33,9 +33,15 @@ int inputFile(char nomeArquivo[MAX_NOME]); // -i [input-file]
 * Funções de manipulação/ajuda
 */
 void lerComentario(FILE *arq); // Pula as linhas comentadas
-int tamanhoNomeArquivo(char nomeArquivo[MAX_NOME], int i);
+int tamanhoNomeArquivo(char *nomeArquivo, int i);
 int verificarExtensao(char *extensao);
 #include "manipulated.c"
+
+/**
+* Funções de manipulação de imagens de modo geral
+*/
+int validarImagem(char *nomeImagem); // Validar imagem
+#include "img.c"
 
 /**
 * Funções de manipulação de PPM

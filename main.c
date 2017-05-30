@@ -20,14 +20,7 @@ int main(int argc, char **argv){
 }
 */
 } else {
-	int tamanho = tamanhoNomeArquivo(argv[argc-1], 0);
-	printf("Tamanho do nome do arquivo %s: %d\n", argv[argc-1], tamanho);
-
-	char *extensao = malloc(3*sizeof(char));
-	extensao[0] = argv[argc-1][tamanho-3];
-	extensao[1] = argv[argc-1][tamanho-2];
-	extensao[2] = argv[argc-1][tamanho-1];
-	printf("Extensão %s (codigo: %d)\n", extensao, verificarExtensao(extensao));
+	validarImagem(argv[argc-1]);
 	/*
 	for(arg = 2; arg < argc; arg++){
 	if(strcmp(argv[arg], "-f") == 0){
