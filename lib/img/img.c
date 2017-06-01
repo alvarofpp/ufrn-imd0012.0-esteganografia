@@ -3,7 +3,7 @@
 * Verifica a extensão e o tamanho do nome da imagem.
 * Retorna TRUE para imagem válida e FALSE para não válida.
 */
-int validarImagem(char *nomeImagem){
+int validateImagem(char *nomeImagem){
 	// Verifica o tamanho do nome da imagem
 	int tamanho = tamanhoNomeArquivo(nomeImagem, 0);
 	if(tamanho > MAX_NOME){
@@ -17,11 +17,11 @@ int validarImagem(char *nomeImagem){
 	extensao[0] = nomeImagem[tamanho-3];
 	extensao[1] = nomeImagem[tamanho-2];
 	extensao[2] = nomeImagem[tamanho-1];
-	if(!verificarExtensao(extensao)){
+	if(!checkExtensao(extensao)){
 		printf("Extensão de imagem inválida! O programa só aceita imagens de extensão .ppm e .bmp.\n");
 		return FALSE;
 	}
-	printf("Extensão %s (codigo: %d)\n", extensao, verificarExtensao(extensao));
+	printf("Extensão %s (codigo: %d)\n", extensao, checkExtensao(extensao));
 
 	return TRUE;
 }

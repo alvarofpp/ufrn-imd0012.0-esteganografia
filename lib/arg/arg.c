@@ -1,7 +1,7 @@
 /**
 * Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes
 **/
-void imprimirArgv(int argc, char **argv){
+void printArgv(int argc, char **argv){
   int i;
   printf("ARGC: %d\n", argc);
   for(i = 0; i < argc; i++){
@@ -43,7 +43,7 @@ void help(){
 * O primeiro argumento deve ser, obrigatoriamente, ou -e ou -d.
 * Os argumentos -f, -i, -m e -o indicam parametros seguintes.
 **/
-int validarArgv(int argc, char **argv){
+int validateArgv(int argc, char **argv){
   // Verifica se o primeiro argumento é válido
   if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-e") == 0)){
     // Verifica se a quantidade de argumentos é ideal

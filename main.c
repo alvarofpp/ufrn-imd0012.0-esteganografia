@@ -6,14 +6,19 @@
 #include "lib/img/img.h"
 
 int main(int argc, char **argv){
-	imprimirArgv(argc, argv);
+	printArgv(argc, argv);
 	if((argc == 1) || (strcmp(argv[1], "-h") == 0) || (strcmp(argv[1], "--help") == 0)){
 		help();
-	} else if(validarArgv(argc, argv)){
+	} else if(validateArgv(argc, argv)){
 		if(strcmp(argv[1], "-d") == 0){
 		} else {
-			if(validarImagem(argv[argc-1])){
-
+			if(validateImagem(argv[argc-1])){
+				switch(getExtensao(argv[argc-1])){
+					case extPPM:
+					readingPPM(argv[argc-1]);
+					break;
+					case extBMP:break;
+				}
 			} else {
 				exit(EXIT_SUCCESS);
 			}

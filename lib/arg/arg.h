@@ -4,9 +4,9 @@
 /**
 * Funções
 **/
-void imprimirArgv(int argc, char **argv); // Mostrar os argumentos inseridos pelo terminal
+void printArgv(int argc, char **argv); // Mostrar os argumentos inseridos pelo terminal
 void help(); // Mensagem de ajuda
-int validarArgv(int argc, char **argv); // Essa função verifica se os argumentos passados são válidos
+int validateArgv(int argc, char **argv); // Essa função verifica se os argumentos passados são válidos
 #include "arg.c"
 
 #endif
