@@ -1,7 +1,3 @@
-teste
-testeteste
-testetesteteste
-testetestetesteteste
-testetestetestetesteteste
-testetestetestetestetesteteste
-teste teste teste teste teste teste
+P3 4 4
+15
+00‚JÏ(q@`¶áM,ş†@`¶á°N,şPM,şhqÙJÏ
