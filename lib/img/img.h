@@ -43,8 +43,7 @@ int checkExtensao(char *extensao);
 * Funções de manipulação de imagens de modo geral
 */
 int validateImagem(char *nomeImagem); // Validar imagem
-void readingPPMAscii(char nomeArquivo[MAX_NOME]); // -i [input-file]
-void readingPPMBin(char nomeArquivo[MAX_NOME]); // -i [input-file]
+
 
 #include "img.c"
 
@@ -53,7 +52,8 @@ void readingPPMBin(char nomeArquivo[MAX_NOME]); // -i [input-file]
 * Funções de manipulação de PPM
 */
 int readingPPM(char nomeArquivo[MAX_NOME]); // -i [input-file]
-int readingPPM(char nomeArquivo[MAX_NOME]); // -i [input-file]
+void readingPPMAscii(char nomeArquivo[MAX_NOME]); // -i [input-file]
+void readingPPMBin(char nomeArquivo[MAX_NOME]); // -i [input-file]
 #include "ppm.c"
 
 #endif
