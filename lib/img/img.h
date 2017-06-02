@@ -15,18 +15,11 @@ typedef struct {
 } pixel;
 
 typedef struct {
-    int l; // Linhas
-    int c; // Colunas
-    int maxColor; // Máximo de valor de cor
-    pixel **matriz; // Matriz
+  int l; // Linhas
+  int c; // Colunas
+  int maxColor; // Máximo de valor de cor
+  pixel **matriz; // Matriz
 } PPM;
-
-typedef struct {
-    int l; // Linhas
-    int c; // Colunas
-    int maxColor; // Máximo de valor de cor
-    unsigned char *matriz; // Matriz
-} PPMBin;
 
 /**
 * Funções dos comandos por argumento
@@ -41,17 +34,25 @@ void readComentario(FILE *arq); // Pula as linhas comentadas
 int tamanhoNomeArquivo(char *nomeArquivo, int i);
 int getExtensao(char *extensao);
 int checkExtensao(char *extensao);
+
+
+
 #include "helper.c"
 
 /**
 * Funções de manipulação de imagens de modo geral
 */
 int validateImagem(char *nomeImagem); // Validar imagem
+void readingPPMAscii(char nomeArquivo[MAX_NOME]); // -i [input-file]
+void readingPPMBin(char nomeArquivo[MAX_NOME]); // -i [input-file]
+
 #include "img.c"
+
 
 /**
 * Funções de manipulação de PPM
 */
+int readingPPM(char nomeArquivo[MAX_NOME]); // -i [input-file]
 int readingPPM(char nomeArquivo[MAX_NOME]); // -i [input-file]
 #include "ppm.c"
 

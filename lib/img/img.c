@@ -1,4 +1,12 @@
 /**
+* Funções de manipulação de PPM
+*/
+void readingPPMAscii(char nomeArquivo[MAX_NOME]); // -i [input-file]
+void readingPPMBin(char nomeArquivo[MAX_NOME]); // -i [input-file]
+int readingPPM(char nomeArquivo[MAX_NOME]); // -i [input-file]
+#include "ppm.c"
+
+/**
 * Validar a imagem inserida pelo usuário.
 * Verifica a extensão e o tamanho do nome da imagem.
 * Retorna TRUE para imagem válida e FALSE para não válida.

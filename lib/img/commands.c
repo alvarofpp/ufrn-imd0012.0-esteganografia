@@ -1,6 +1,17 @@
+
+/**
+
+* Funções de manipulação de PPM
+*/
+void readingPPMAscii(char nomeArquivo[MAX_NOME]); // -i [input-file]
+void readingPPMBin(char nomeArquivo[MAX_NOME]); // -i [input-file]
+int readingPPM(char nomeArquivo[MAX_NOME]); // -i [input-file]
+
+#include "ppm.c"
 /**
 * -i [input-file]
 * Ler o arquivo de entrada.
+* Incompleto
 */
 int inputFile(char nomeArquivo[MAX_NOME]){
 	FILE *arq;
