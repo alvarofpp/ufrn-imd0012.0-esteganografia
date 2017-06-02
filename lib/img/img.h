@@ -11,10 +11,14 @@
 */
 // Struct e typedef para salvar as informações da imagem PPM
 typedef struct {
+    int r, g, b;
+} pixel;
+
+typedef struct {
   int l; // Linhas
   int c; // Colunas
   int maxColor; // Máximo de valor de cor
-  unsigned char **m; // Matriz
+  pixel **matriz; // Matriz
 } PPM;
 
 /**
