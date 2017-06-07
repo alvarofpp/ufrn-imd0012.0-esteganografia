@@ -1,51 +1,45 @@
 /**
-* Pegar código da extensão
+* Pega o código "enum ext" da extensão da imagem.
+* Recebe um ponteiro com o nome da imagem.
+* Retorna o valor "enum ext" referente a extensão da imagem.
 */
 int getExtensao(char *nomeImagem){
-	int tamanho = tamanhoNomeArquivo(nomeImagem, 0);
+	int tamanho = lenNomeArquivo(nomeImagem, 0);
 
 	char *extensao = malloc(3*sizeof(char));
 	extensao[0] = nomeImagem[tamanho-3];
 	extensao[1] = nomeImagem[tamanho-2];
 	extensao[2] = nomeImagem[tamanho-1];
 
-	if(strcmp(extensao, "ppm") == 0){
+	if(strcmp(extensao, "ppm") == 0)
+	{
 		return extPPM;
 	} else {
-		return extPPM;
+		return extBMP;
 	}
 }
 
 /**
-* Ler e pula as linhas marcadas como comentário
-* FALTA TESTAR
+* Descobrir o tamanho do nome da imagem.
+* Recebe um ponteiro com o nome da imagem e um valor inteiro usado para contagem.
+* Retorna o tamanho do nome do arquivo usando recursão.
 */
-void readComentario(FILE *arq){
-	char ver[255];
-	fgets(ver, 255, arq);
-	if(ver[0] == '#'){
-		printf("É um comentário\n");
-	} else {
-		printf("Não é um comentário\n");
-	}
-}
-
-/**
-* Retorna o tamanho do nome do arquivo usando recursão
-*/
-int tamanhoNomeArquivo(char *nomeArquivo, int i){
-	if(nomeArquivo[i] == '\0'){
+int lenNomeArquivo(char *nomeArquivo, int i){
+	if(nomeArquivo[i] == '\0')
+	{
 		return 0;
 	}
-
-	return 1 + tamanhoNomeArquivo(nomeArquivo, (i+1));
+	return 1 + lenNomeArquivo(nomeArquivo, (i+1));
 }
 
 /**
-* Verificar extensão do arquivo
+* Verificar se a extensão da imagem é válida ou não.
+* Recebe um ponteiro com os caracteres da extensão da imagem.
+* Retorna TRUE se for válido ou FALSE se não for válido.
 */
 int checkExtensao(char *extensao){
-	if((strcmp(extensao, "ppm") == 0) || (strcmp(extensao, "bmp") == 0)){
+	if((strcmp(extensao, "ppm") == 0) || (strcmp(extensao, "bmp") == 0))
+	{
 		return TRUE;
 	}
 	return FALSE;

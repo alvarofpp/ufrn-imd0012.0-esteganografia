@@ -1,17 +1,21 @@
 /**
-* Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes
+* Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes.
+* Recebe uma variável com a quantidade de argumentos e outra com os argumentos.
 **/
 void printArgv(int argc, char **argv){
   int i;
   printf("ARGC: %d\n", argc);
-  for(i = 0; i < argc; i++){
+
+  for(i = 0; i < argc; i++)
+  {
     printf("ARGV[%d] = %s\n", i, argv[i]);
   }
+
   printf("\n");
 }
 
 /**
-* Função com mensagem de ajuda.
+* Função para mostrar mensagem de ajuda.
 **/
 void help(){
   printf("Comandos aceitos:\n");
@@ -42,6 +46,8 @@ void help(){
 * Essa função verifica se os argumentos passados são válidos.
 * O primeiro argumento deve ser, obrigatoriamente, ou -e ou -d.
 * Os argumentos -f, -i, -m e -o indicam parametros seguintes.
+* Recebe uma variável com a quantidade de argumentos e outra com os argumentos.
+* Retorna TRUE caso os argumentos sejam válidos ou FALSE caso algum argumento não seja válido.
 **/
 int validateArgv(int argc, char **argv){
   // Verifica se o primeiro argumento é válido
