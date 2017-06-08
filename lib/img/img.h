@@ -41,7 +41,6 @@ int lenNomeArquivo(char *nomeArquivo, int i);
 int validateImagem(char *nomeImagem); // Validar imagem
 #include "img.c"
 
-
 /**
 * Funções de manipulação de PPM
 */
@@ -49,5 +48,11 @@ void readingPPMBin(char *nomeArquivo); // Leitura de PPM P6
 void readingPPMAscii(char *nomeArquivo); // Leitura de PPM P3
 int readingPPM(char *nomeArquivo); // Primeira etapa da leitura da imagem
 #include "ppm.c"
+
+/**
+* Funções de manipulação de BMP
+*/
+int readingBMP(char *nomeArquivo); // Leitura da imagem
+#include "bmp.c"
 
 #endif

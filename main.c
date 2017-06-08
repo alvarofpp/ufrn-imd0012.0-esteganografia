@@ -17,7 +17,9 @@ int main(int argc, char **argv){
 					case extPPM:
 					readingPPM(argv[argc-1]);
 					break;
-					case extBMP:break;
+					case extBMP:
+					readingBMP(argv[argc-1]);
+					break;
 				}
 			} else {
 				exit(EXIT_SUCCESS);

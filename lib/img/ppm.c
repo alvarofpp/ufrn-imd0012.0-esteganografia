@@ -4,24 +4,25 @@
 */
 void readingPPMAscii(char *nomeImagem){
   FILE *arq; // Arquivo
+  int i, j; // Contadores
+  PPM ppm; // Struct de manipulação
+  char cabecalho[2]; // Cabeçalho
+
   arq = fopen(nomeImagem, "r"); // Declara ponteiro de imagem
 
   // Lê o cabeçalho
-  char cabecalho[2];
   fscanf(arq, "%s", cabecalho);
 
   // Criar struct para manipulação de PPM e coloca as informações padrões
-  PPM ppm;
   fscanf(arq, "%d %d", &ppm.c, &ppm.l);
   fscanf(arq, "%d", &ppm.maxColor);
-
-  // Contadores
-  int i, j;
 
   // Aloca o tamanho necessário
   ppm.matriz = malloc((ppm.l)*sizeof(Pixel));
   for(i = 0; i < ppm.l; i++)
+  {
     ppm.matriz[i] = malloc((ppm.c)*sizeof(Pixel));
+  }
 
   printf("Quantidade de bytes a serem lidos: %d\n", (ppm.l*ppm.c));
 
@@ -53,15 +54,16 @@ void readingPPMAscii(char *nomeImagem){
 */
 void readingPPMBin(char *nomeImagem){
   int numRow, numCol, maxNum; // Informações do arquivo de entrada
-  // Contadores
-  int i;
-  long int count;
+  FILE *oldFile; // Arquivo de leitura
+  FILE *newFile; // Arquivo de saída
+  char cabecalho[2]; // Cabeçalho
+  int i; // Contador
+  long int count; // Contador
 
-  FILE *oldFile; // Arquivo
-  oldFile = fopen(nomeImagem, "rb"); // Declara o ponteiro da imagem
+  // Declara o ponteiro da imagem
+  oldFile = fopen(nomeImagem, "rb");
 
   // Lê o cabeçalho
-  char cabecalho[2]; // Cabeçalho da imagem
   fscanf(oldFile, "%s", cabecalho);
 
   // Verifica o tamanho em bits do arquivo e retorna para formar o array
@@ -71,8 +73,8 @@ void readingPPMBin(char *nomeImagem){
   printf("%ld\n", count);
   rewind(oldFile);
 
-  FILE *newFile; // Novo arquivo
-  newFile = fopen("teste.ppm", "wb"); // Escrita em binário no arquivo
+  // Escrita em binário no arquivo
+  newFile = fopen("teste.ppm", "wb+");
 
   // Imprime a informação no novo Arquivo
   fseek(oldFile, 0, SEEK_SET);
