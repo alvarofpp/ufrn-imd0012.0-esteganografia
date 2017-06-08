@@ -1,0 +1,19 @@
+modificando o bit 
+
+	unsigned char t;
+
+	vou ter que entrar em cada byte e saber se é impar ou par. Usar o conversor de ASCII para bits e ver o que é cada um em bit
+	Assim sabendo qual c
+	se t = 254;
+	quero q ele fique 255
+	t = t | 1; - operador ou
+
+	t = 254//1111110
+	1 = //0000001
+	255 = 1111111
+
+	extraindo bit de caracter:
+
+	int i;
+	for(i = 7; i >= 0; i--)
+		printf("%d", (t&(1 << i)) >> i) //pega o primeiro bit e depois ele da o shift de volta para poder ler o segundo bit do caracter.
