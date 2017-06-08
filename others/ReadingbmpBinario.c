@@ -6,16 +6,17 @@
 void main(void)
 {
     char type[3];
-    int numRow, numCol, maxNum, i;
+    int i, offset;
     FILE *oldFile, *newFile;
     long int count; //contar o tamanho de bytes do arquivo inteiro
     unsigned char currentlocation[5];
     unsigned char valpixel = '$';
-    unsigned char compress = '\0'; 
+    unsigned char compress = '\0';
 
-    oldFile = fopen("lena512.bmp", "rb");
+
+    oldFile = fopen("test_image.bmp", "rb");
     if(oldFile == NULL) {
-        fprintf(stderr, "Não pode abrir em leitura binária");
+        fprintf(stderr, "Não pode abrir em leitura binária\n");
 
     }
     /*
@@ -37,31 +38,34 @@ void main(void)
     fseek(oldFile, 0, 2);
     count = ftell(oldFile);
     unsigned char currentPixel[count];
-    printf("%ld", count);
+    printf("Extensão da imagem: %ld \n", count);
     rewind(oldFile);
 
-    newFile = fopen("teste.bmp", "wb+");
+    newFile = fopen("copy.bmp", "wb+");
 
     /*
     Verifica e valida o arquivo bmp, se é 24 bits e se não tem compressão 
     Todo cabeçalho contendo as infos do arquivo bmp tem 54 bytes. Dai cada
     bloco tem suas infos particulares. 
     */
-    
-    fseek(oldFile, 28, 1);// verifica o bloco de bytes contendo BitCount
-    fread(&currentlocation, 1, 1, oldFile);
+    fseek(oldFile, 28, 0);// verifica o bloco de bytes contendo BitCount
+    fread(&currentlocation, sizeof(unsigned char), 1, oldFile);
     if (currentlocation[0] != valpixel)
     	fprintf(stderr, "Este arquivo não é um .bmp com 24 bits por píxel\n");
    	
-   	fseek(oldFile, 30, 1);//verifica o bloco de bytes contendo BiCompress
-   	fread(&currentlocation, 1, 1, oldFile);
+   	fseek(oldFile, 30, 0);//verifica o bloco de bytes contendo BiCompress
+   	fread(&currentlocation, sizeof(unsigned char), 1, oldFile);
    	if (currentlocation[0] != compress)
    		fprintf(stderr, "Este arquivo .bmp tem compressão\n");
-    
+    fseek(oldFile, 10, 0);
+    fread(&offset, sizeof(int), 1, oldFile);
+    printf("%d \n", offset);
     /*
-    Imprime a informação no novo arquivo bmṕ
+    Imprime a informação no novo arquivo bmp
+    Esse arquivo bmp vai ter as informações após o cabeçalho
+    Essa mesma string é a que será usada para poder modificar os bits 
     */
-    fseek(oldFile, 0, 0);
+    fseek(oldFile, offset, 1);
    	fread(&currentPixel, sizeof(unsigned char), count, oldFile);
    	fwrite(&currentPixel, sizeof(unsigned char), count, newFile);
 
