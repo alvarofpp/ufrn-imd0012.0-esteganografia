@@ -13,5 +13,6 @@ Realizar esteganografia em linguagem C. Projeto da matéria de Introdução as T
     - helper.c - Funções de ajuda
     - img.c - Funções de manipulação de imagens de modo geral
     - ppm.c - Funções de manipulação de PPM
+    - bmp.c - Funções de manipulação de BMP
   - global.h - Variáveis globais para todo o código
 - *image* - Contêm as imagens que foram usadas para testes nesse trabalho

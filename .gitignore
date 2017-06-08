@@ -3,4 +3,3 @@ CMakeLists.txt
 cmake-build-debug/
 .idea/
 teste.*
-/.idea
