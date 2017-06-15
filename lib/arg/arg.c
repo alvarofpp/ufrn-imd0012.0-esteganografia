@@ -2,10 +2,12 @@
 * Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes.
 * Recebe uma variável com a quantidade de argumentos e outra com os argumentos.
 **/
-void printArgv(int argc, char **argv){
-  int i;
+void printArgv(int argc, char **argv)
+{
+  int i; // Contador
   printf("ARGC: %d\n", argc);
 
+  // Percorre os argumentos
   for(i = 0; i < argc; i++)
   {
     printf("ARGV[%d] = %s\n", i, argv[i]);
@@ -17,7 +19,8 @@ void printArgv(int argc, char **argv){
 /**
 * Função para mostrar mensagem de ajuda.
 **/
-void help(){
+void help()
+{
   printf("Comandos aceitos:\n");
   printf(" -d               Executa o programa em modo de decodificador (decoder);\n");
   printf(" -e               Executa programa em modo de codificador (encoder);\n");
@@ -49,20 +52,28 @@ void help(){
 * Recebe uma variável com a quantidade de argumentos e outra com os argumentos.
 * Retorna TRUE caso os argumentos sejam válidos ou FALSE caso algum argumento não seja válido.
 **/
-int validateArgv(int argc, char **argv){
+int validateArgv(int argc, char **argv)
+{
   // Verifica se o primeiro argumento é válido
-  if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-e") == 0)){
-    // Verifica se a quantidade de argumentos é ideal
-    int i;
+  if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-e") == 0))
+  {
+    int i; // Verifica se a quantidade de argumentos é ideal
 
-    if(strcmp(argv[1], "-d") == 0){
-      for(i = 2; i < argc; i++){
-        if((strcmp(argv[i], "-o") == 0)){
+    if(strcmp(argv[1], "-d") == 0)
+    {
+      for(i = 2; i < argc; i++)
+      {
+        if((strcmp(argv[i], "-o") == 0))
+        {
           i++;
           continue;
-        } else if(strcmp(argv[i], "-s") == 0){
+        }
+        else if(strcmp(argv[i], "-s") == 0)
+        {
           continue;
-        } else {
+        }
+        else
+        {
           printf("Argumento \"%s\" é inválido!\n", argv[i]);
           printf("Argumentos aceitos de decodificação: \n");
           printf(" -o [output-file] Indica o arquivo de saída para onde será gravada a mensagem decodificada;\n");
@@ -73,14 +84,22 @@ int validateArgv(int argc, char **argv){
         }
       }
       return TRUE;
-    } else {
-      for(i = 2; i < argc; i++){
-        if((strcmp(argv[i], "-f") == 0) || (strcmp(argv[i], "-i") == 0) || (strcmp(argv[i], "-m") == 0)){
+    }
+    else
+    {
+      for(i = 2; i < argc; i++)
+      {
+        if((strcmp(argv[i], "-f") == 0) || (strcmp(argv[i], "-i") == 0) || (strcmp(argv[i], "-m") == 0))
+        {
           i++;
           continue;
-        } else if((strcmp(argv[i], "-r") == 0) || (i = (argc-1))){
+        }
+        else if((strcmp(argv[i], "-r") == 0) || (i = (argc-1)))
+        {
           continue;
-        } else {
+        }
+        else
+        {
           printf("Argumento \"%s\" é inválido!\n", argv[i]);
           printf("Argumentos aceitos de codificação: \n");
           printf(" -f [format]      Indica o formato da imagem.\n");
@@ -95,7 +114,9 @@ int validateArgv(int argc, char **argv){
         return TRUE;
       }
     }
-  } else {
+  }
+  else
+  {
     printf("Indique como primeiro argumento se o programa deve ser executado em um dos seguinte modos:\n");
     printf(" -d   Executa o programa em modo de decodificador (decoder);\n");
     printf(" -e   Executa programa em modo de codificador (encoder);\n");

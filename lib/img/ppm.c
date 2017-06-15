@@ -95,13 +95,6 @@ int readingPPM(char *nomeImagem)
   FILE *arq; // Arquivo
   arq = fopen(nomeImagem, "r"); // Declara ponteiro de imagem
 
-  // Verifica se o arquivo existe
-  if (arq == NULL)
-  {
-    fprintf(stderr, "Imagem inexistente! \n");
-    return FALSE;
-  }
-
   // Lê o cabeçalho e verifica se não tem nada fora do normal para a extensão do arquivo
   char cabecalho[2];
   fscanf(arq, "%s", cabecalho); // Ler cabeçalho

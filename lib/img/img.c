@@ -1,11 +1,57 @@
 /**
+* Pega o código "enum ext" da extensão da imagem.
+* Recebe um ponteiro com o nome da imagem.
+* Retorna o valor "enum ext" referente a extensão da imagem.
+*/
+int getExtensao(char *nomeImagem)
+{
+	int tamanho = lenPalavra(nomeImagem, 0);
+
+	char *extensao = malloc(3*sizeof(char));
+	extensao[0] = nomeImagem[tamanho-3];
+	extensao[1] = nomeImagem[tamanho-2];
+	extensao[2] = nomeImagem[tamanho-1];
+
+	if(strcmp(extensao, "ppm") == 0)
+	{
+		return extPPM;
+	} else {
+		return extBMP;
+	}
+}
+
+/**
+* Verificar se a extensão da imagem é válida ou não.
+* Recebe um ponteiro com os caracteres da extensão da imagem.
+* Retorna TRUE se for válido ou FALSE se não for válido.
+*/
+int checkExtensao(char *extensao)
+{
+	if((strcmp(extensao, "ppm") == 0) || (strcmp(extensao, "bmp") == 0))
+	{
+		return TRUE;
+	}
+	return FALSE;
+}
+
+/**
 * Validar a imagem inserida pelo usuário. Verifica a extensão e o tamanho do nome da imagem.
 * Recebe um ponteiro com o nome da imagem.
 * Retorna TRUE para imagem válida e FALSE para não válida.
 */
-int validateImagem(char *nomeImagem){
+int validateImagem(char *nomeImagem)
+{
+	// Verifica se o arquivo existe
+	FILE *arq; // Arquivo
+	arq = fopen(nomeImagem, "r"); // Declara ponteiro de imagem
+	if (arq == NULL)
+	{
+		fprintf(stderr, "Imagem inexistente! \n");
+		return FALSE;
+	}
+
 	// Verifica o tamanho do nome da imagem
-	int tamanho = lenNomeArquivo(nomeImagem, 0);
+	int tamanho = lenPalavra(nomeImagem, 0);
 	if(tamanho > MAX_NOME)
 	{
 		printf("Nome de imagem inválido! Deve conter, no máximo, %d caracteres.\n", MAX_NOME);

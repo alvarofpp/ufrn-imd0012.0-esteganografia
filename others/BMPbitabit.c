@@ -5,7 +5,7 @@
 
 
 int ReadBitmapHeaders(char* fileLocation, bmp_fileheader *fileheader, bmp_infoheader *infoheader)
-{	
+{
     FILE* f;
     f = fopen(fileLocation, "rb");
 
@@ -16,30 +16,30 @@ int ReadBitmapHeaders(char* fileLocation, bmp_fileheader *fileheader, bmp_infohe
     }
     fread(fileheader, sizeof(bmp_fileheader), 1, f);
     fread(infoheader, sizeof(bmp_infoheader), 1, f);
-    
+
     fclose(f);
-    
+
     return 0;
 }
 int Verification(bmp_infoheader *infoheader, bmp_fileheader *fileheader){
-	
+
 	int bitPix = (short)infoheader->bitPix;
 	int biCompression = (int16_t)infoheader->biCompression;
 
 	fprintf(stderr, "Valor do bitPix: %d \n", abs(bitPix));
 	fprintf(stderr, "Valor do Compression: %d \n", abs(biCompression));
-		
-	
+
+
 }
-	
+
 int EncodingAndWriting(char* fileCode, char* fileName, char* fileout, bmp_fileheader *fileheader, bmp_infoheader *infoheader){
 	FILE* img;
 	FILE* code;
 	FILE* out;
-	
+
 	unsigned int maskbit = 0x00000001, result1, result2; //mascara para verificar o ultimo bit e os resultados das operações com os bits
 	char coding[256]; //string para receber a mensagem
-	
+
 	code = fopen(fileCode, "rb");
 	img = fopen(fileName, "rb");
 	out = fopen(fileout, "wb+");
@@ -57,7 +57,7 @@ int EncodingAndWriting(char* fileCode, char* fileName, char* fileout, bmp_filehe
 	char* pixelArray = (char*)malloc(pixelArraySize);
 	/*
 	Para criar em PPM não precisa você criar esse malloc com essa config, você apenas implenta isso aqui no lugar devido:
-	
+
 	fseek(arquivodeorigem, 0, 3);
 	tamanhodoarquivo = ftell(arquivodeorigem);
 	char stringquevocecriar[tamanhodoarquivo];
@@ -74,7 +74,7 @@ int EncodingAndWriting(char* fileCode, char* fileName, char* fileout, bmp_filehe
 	fread(pixelArray, sizeof(char), 1, img);
 	fseek(fileCode, 0, SEEK_SET);
 	fread(coding, sizeof(char), 1, code);
-	
+
 	/*
 	Fazendo as trocas de bits - Primeiro for vai pecorrer a string do code
 	Segundo for vai pecorrer cada bit de cada char
@@ -86,7 +86,7 @@ int EncodingAndWriting(char* fileCode, char* fileName, char* fileout, bmp_filehe
 			result1 = maskbit & code[i];
 			code[i]&(1 << j) >> j;
 			for (int k = 0; k < 8 ; k++){
-				result2 = maskbit & pixelArray[k];	
+				result2 = maskbit & pixelArray[k];
 				if (result1 != 0){
 					if (result1 != result2){
 						pixelArray[k] = pixelArray[k] ^ maskbit;
@@ -95,11 +95,11 @@ int EncodingAndWriting(char* fileCode, char* fileName, char* fileout, bmp_filehe
 				else {
 					if(result1 != result2)
 						pixelArray[k] = pixelArray[k] | maskbit;
-				}	
+				}
 			}
 		}
 	}
-	
+
 
 	/*
 	Escrevendo tudo isso na imagem nova

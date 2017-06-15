@@ -7,4 +7,10 @@
 // Tipos de extensão
 enum ext {extPPM = 1, extBMP};
 
+/*
+* Funções globais
+*/
+int lenPalavra(char *palavra, int i); // Descobrir o tamanho da palavra
+#include "global.c"
+
 #endif
