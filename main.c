@@ -10,12 +10,14 @@ int main(int argc, char **argv)
 {
 	printArgv(argc, argv); // Mostrar os argumentos passados
 
+	convertIntForByte(254);
+
 	// Verifica se a função help() foi chamada ou se nenhum argumento foi passado
 	if((argc == 1) || (strcmp(argv[1], "-h") == 0) || (strcmp(argv[1], "--help") == 0))
 	{
 		help();
-		// Válida os argumentos passados
 	}
+	// Válida os argumentos passados
 	else if(validateArgv(argc, argv))
 	{
 		// Verifica se o modo selecionado é de decodificação ou codificação
@@ -35,6 +37,8 @@ int main(int argc, char **argv)
 			{
 				case extPPM:
 					readingPPM(argv[argc-1]);
+					int input = getParametro(argc, argv, "-i"); // Arquivo com o texto
+					encodingPPM(argv[input], argv[argc-1]);
 				break;
 				case extBMP:
 				/*

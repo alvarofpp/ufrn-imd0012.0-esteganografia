@@ -59,7 +59,8 @@ bool validateImagem(char *nomeImagem); // Validar imagem
 */
 void readingPPMBin(char *nomeArquivo); // Leitura de PPM P6
 void readingPPMAscii(char *nomeArquivo); // Leitura de PPM P3
-PPM readingPPM(char *nomeArquivo); // Primeira etapa da leitura da imagem
+void readingPPM(char *nomeArquivo); // Primeira etapa da leitura da imagem
+bool encodingPPM(char* fileCode, char* fileName);
 #include "ppm.c"
 
 /**

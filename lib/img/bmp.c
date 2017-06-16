@@ -60,21 +60,23 @@ bool encodingBMP(char* fileCode, char* fileName, BMPFileHeader *fileheader, BMPI
   size_t pixelArraySize = rowSize * abs(infoheader->height);
   char* pixelArray = (char*)malloc(pixelArraySize);
 
-  // Lendo a imagem e o arquivo txt
+  // Lendo a imagem
   fseek(img, *fileheader->imageDataOffset, SEEK_CUR);
   fread(pixelArray, sizeof(char), 1, img);
+  // Lendo o arquivo txt
   fseek(code, 0, SEEK_SET);
   fread(coding, sizeof(char), 1, code);
 
+  int i, j, k; // Contadores
   // Fazendo as trocas de bits
   // Percorre a string do code
-  for (int i = 0; i < strlen(coding); i++){
+  for (i = 0; i < strlen(coding); i++){
     // Percorre cada bit do char
-    for (int j = 8; j >= 0; j--){
+    for (j = 8; j >= 0; j--){
       result1 = maskbit & coding[i];
       coding[i]&(1 << j) >> j;
       // Pecorre 8 char para esconder no último o bit de cada bit do segundo for
-      for (int k = 0; k < 8 ; k++){
+      for (k = 0; k < 8 ; k++){
         result2 = maskbit & pixelArray[k];
         if (result1 != 0){
           if (result1 != result2){
@@ -98,5 +100,6 @@ bool encodingBMP(char* fileCode, char* fileName, BMPFileHeader *fileheader, BMPI
   fclose(out);
   fclose(img);
   fclose(code);
+  
   return true;
 }
