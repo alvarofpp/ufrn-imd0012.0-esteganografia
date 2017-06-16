@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "lib/global.h"
 #include "lib/arg/arg.h"
 #include "lib/img/img.h"
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
 					readingPPM(argv[argc-1]);
 				break;
 				case extBMP:
+				/*
 					// Variáveis usadas
 					BMPFileHeader fileheader;
 					BMPInfoHeader infoheader;
@@ -45,7 +47,8 @@ int main(int argc, char **argv)
 					verification(&fileheader, &infoheader);
 					int input = getParametro(argc, argv, "-i"); // Arquivo com o texto
 					int output = getParametro(argc, argv, "-o"); // Arquivo de saída
-					encodingAndWriting(argv[input], argv[argc-1], &fileheader, &infoheader);
+					encodingBMP(argv[input], argv[argc-1], &fileheader, &infoheader);
+					*/
 				break;
 			}
 		}

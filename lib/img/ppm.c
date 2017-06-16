@@ -2,7 +2,8 @@
 * Ler, especificamente, imagem PPM P3.
 * Recebe um ponteiro com o nome da imagem.
 */
-void readingPPMAscii(char *nomeImagem){
+void readingPPMAscii(char *nomeImagem)
+{
   FILE *arq; // Arquivo
   arq = fopen(nomeImagem, "r"); // Declara ponteiro de imagem
 
@@ -21,7 +22,9 @@ void readingPPMAscii(char *nomeImagem){
   // Aloca o tamanho necessário
   ppm.matriz = malloc((ppm.l)*sizeof(Pixel));
   for(i = 0; i < ppm.l; i++)
+  {
     ppm.matriz[i] = malloc((ppm.c)*sizeof(Pixel));
+  }
 
   printf("Quantidade de bytes a serem lidos: %d\n", (ppm.l*ppm.c));
 
@@ -51,7 +54,8 @@ void readingPPMAscii(char *nomeImagem){
 * Ler, especificamente, imagem PPM P6.
 * Recebe um ponteiro com o nome da imagem.
 */
-void readingPPMBin(char *nomeImagem){
+void readingPPMBin(char *nomeImagem)
+{
   int numRow, numCol, maxNum; // Informações do arquivo de entrada
   // Contadores
   int i;
@@ -90,8 +94,9 @@ void readingPPMBin(char *nomeImagem){
 * Recebe um ponteiro com o nome da imagem.
 * Retorna FALSE se deu algo errado e TRUE se deu tudo certo.
 */
-int readingPPM(char *nomeImagem)
+PPM readingPPM(char *nomeImagem)
 {
+  PPM ppm; // Variável de retorno
   FILE *arq; // Arquivo
   arq = fopen(nomeImagem, "r"); // Declara ponteiro de imagem
 
@@ -108,5 +113,5 @@ int readingPPM(char *nomeImagem)
     readingPPMBin(nomeImagem); // P6
   }
 
-  return TRUE;
+  return ppm;
 }

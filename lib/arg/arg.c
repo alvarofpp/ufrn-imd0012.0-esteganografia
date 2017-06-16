@@ -52,7 +52,7 @@ void help()
 * Recebe uma variável com a quantidade de argumentos e outra com os argumentos.
 * Retorna TRUE caso os argumentos sejam válidos ou FALSE caso algum argumento não seja válido.
 **/
-int validateArgv(int argc, char **argv)
+bool validateArgv(int argc, char **argv)
 {
   // Verifica se o primeiro argumento é válido
   if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-e") == 0))
@@ -79,11 +79,11 @@ int validateArgv(int argc, char **argv)
           printf(" -o [output-file] Indica o arquivo de saída para onde será gravada a mensagem decodificada;\n");
           printf(" -s               Indica que a mensagem decodificada deve ser mostrada na saída padrão.\n");
           printf("                  O uso desta opção invalida o uso da opção -o.\n");
-          return FALSE;
+          return false;
           break;
         }
       }
-      return TRUE;
+      return true;
     }
     else
     {
@@ -108,10 +108,10 @@ int validateArgv(int argc, char **argv)
           printf(" -m [method]      Indica o método de codificação da mensagem.\n");
           printf("                  Valores aceitos: LSB e BPCS;\n");
           printf(" -r               Redimensionar a imagem para o menor tamanho possível;\n");
-          return FALSE;
+          return false;
           break;
         }
-        return TRUE;
+        return true;
       }
     }
   }
@@ -120,6 +120,6 @@ int validateArgv(int argc, char **argv)
     printf("Indique como primeiro argumento se o programa deve ser executado em um dos seguinte modos:\n");
     printf(" -d   Executa o programa em modo de decodificador (decoder);\n");
     printf(" -e   Executa programa em modo de codificador (encoder);\n");
-    return FALSE;
+    return false;
   }
 }

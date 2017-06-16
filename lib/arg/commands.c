@@ -12,5 +12,5 @@ int getParametro(int argc, char **argv, char *argumento)
 		}
   }
 
-	return FALSE;
+	return 0;
 }

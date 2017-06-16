@@ -33,7 +33,7 @@ void verification(BMPFileHeader *fileheader, BMPInfoHeader *infoheader)
 * Recebe o arquivo que conterá o texto, a imagem, o arquivo de saída e dois structs com as informações BMP
 * Retorna TRUE caso tudo der certo e FALSE caso aconteça algum erro
 */
-int encodingAndWriting(char* fileCode, char* fileName, BMPFileHeader *fileheader, BMPInfoHeader *infoheader)
+bool encodingBMP(char* fileCode, char* fileName, BMPFileHeader *fileheader, BMPInfoHeader *infoheader)
 {
   // Arquivos que serão usados
   FILE* img; // Imagem
@@ -52,7 +52,7 @@ int encodingAndWriting(char* fileCode, char* fileName, BMPFileHeader *fileheader
   if (!out || !img || !code)
   {
     fprintf(stderr,"Erro ao abrir um dos arquivos!\n");
-    return FALSE;
+    return false;
   }
 
   // Criando a string de array do tamanho da quantidade de pixels
@@ -98,5 +98,5 @@ int encodingAndWriting(char* fileCode, char* fileName, BMPFileHeader *fileheader
   fclose(out);
   fclose(img);
   fclose(code);
-  return TRUE;
+  return true;
 }

@@ -25,13 +25,13 @@ int getExtensao(char *nomeImagem)
 * Recebe um ponteiro com os caracteres da extensão da imagem.
 * Retorna TRUE se for válido ou FALSE se não for válido.
 */
-int checkExtensao(char *extensao)
+bool checkExtensao(char *extensao)
 {
 	if((strcmp(extensao, "ppm") == 0) || (strcmp(extensao, "bmp") == 0))
 	{
-		return TRUE;
+		return true;
 	}
-	return FALSE;
+	return false;
 }
 
 /**
@@ -39,7 +39,7 @@ int checkExtensao(char *extensao)
 * Recebe um ponteiro com o nome da imagem.
 * Retorna TRUE para imagem válida e FALSE para não válida.
 */
-int validateImagem(char *nomeImagem)
+bool validateImagem(char *nomeImagem)
 {
 	// Verifica se o arquivo existe
 	FILE *arq; // Arquivo
@@ -47,7 +47,7 @@ int validateImagem(char *nomeImagem)
 	if (arq == NULL)
 	{
 		fprintf(stderr, "Imagem inexistente! \n");
-		return FALSE;
+		return false;
 	}
 
 	// Verifica o tamanho do nome da imagem
@@ -55,7 +55,7 @@ int validateImagem(char *nomeImagem)
 	if(tamanho > MAX_NOME)
 	{
 		printf("Nome de imagem inválido! Deve conter, no máximo, %d caracteres.\n", MAX_NOME);
-		return FALSE;
+		return false;
 	}
 
 	printf("Tamanho do nome do arquivo %s: %d\n", nomeImagem, tamanho);
@@ -70,10 +70,10 @@ int validateImagem(char *nomeImagem)
 	if(!checkExtensao(extensao))
 	{
 		printf("Extensão de imagem inválida! O programa só aceita imagens de extensão .ppm e .bmp.\n");
-		return FALSE;
+		return false;
 	}
 
 	printf("Extensão %s (codigo: %d)\n", extensao, checkExtensao(extensao));
 
-	return TRUE;
+	return true;
 }
