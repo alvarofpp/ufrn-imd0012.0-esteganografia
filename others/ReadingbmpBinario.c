@@ -44,15 +44,15 @@ void main(void)
     newFile = fopen("copy.bmp", "wb+");
 
     /*
-    Verifica e valida o arquivo bmp, se é 24 bits e se não tem compressão 
+    Verifica e valida o arquivo bmp, se é 24 bits e se não tem compressão
     Todo cabeçalho contendo as infos do arquivo bmp tem 54 bytes. Dai cada
-    bloco tem suas infos particulares. 
+    bloco tem suas infos particulares.
     */
     fseek(oldFile, 28, 0);// verifica o bloco de bytes contendo BitCount
     fread(&currentlocation, sizeof(unsigned char), 1, oldFile);
     if (currentlocation[0] != valpixel)
     	fprintf(stderr, "Este arquivo não é um .bmp com 24 bits por píxel\n");
-   	
+
    	fseek(oldFile, 30, 0);//verifica o bloco de bytes contendo BiCompress
    	fread(&currentlocation, sizeof(unsigned char), 1, oldFile);
    	if (currentlocation[0] != compress)
@@ -63,7 +63,7 @@ void main(void)
     /*
     Imprime a informação no novo arquivo bmp
     Esse arquivo bmp vai ter as informações após o cabeçalho
-    Essa mesma string é a que será usada para poder modificar os bits 
+    Essa mesma string é a que será usada para poder modificar os bits
     */
     fseek(oldFile, offset, 1);
    	fread(&currentPixel, sizeof(unsigned char), count, oldFile);
