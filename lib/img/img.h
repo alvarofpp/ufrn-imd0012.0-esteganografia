@@ -52,7 +52,6 @@ typedef struct
 int getExtensao(char *extensao); // Pegar extensão do arquivo
 bool checkExtensao(char *extensao); // Checar a extensão do arquivo
 bool validateImagem(char *nomeImagem); // Validar imagem
-#include "img.c"
 
 /**
 * Funções de manipulação de PPM
@@ -61,7 +60,6 @@ void readingPPMBin(char *nomeArquivo); // Leitura de PPM P6
 void readingPPMAscii(char *nomeArquivo); // Leitura de PPM P3
 void readingPPM(char *nomeArquivo); // Primeira etapa da leitura da imagem
 bool encodingPPM(char* fileCode, char* fileName);
-#include "ppm.c"
 
 /**
 * Funções de manipulação de BMP
@@ -69,6 +67,5 @@ bool encodingPPM(char* fileCode, char* fileName);
 void readBitmapHeaders(char* nomeImagem, BMPFileHeader *fileheader, BMPInfoHeader *infoheader);
 void verification(BMPFileHeader *fileheader, BMPInfoHeader *infoheader);
 bool encodingBMP(char* fileCode, char* fileName, BMPFileHeader *fileheader, BMPInfoHeader *infoheader);
-#include "bmp.c"
 
 #endif

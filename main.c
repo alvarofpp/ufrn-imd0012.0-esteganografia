@@ -10,8 +10,6 @@ int main(int argc, char **argv)
 {
 	printArgv(argc, argv); // Mostrar os argumentos passados
 
-	convertIntForByte(254);
-
 	// Verifica se a função help() foi chamada ou se nenhum argumento foi passado
 	if((argc == 1) || (strcmp(argv[1], "-h") == 0) || (strcmp(argv[1], "--help") == 0))
 	{

@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
 /**
 * Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes.
 * Recebe uma variável com a quantidade de argumentos e outra com os argumentos.
@@ -122,4 +126,21 @@ bool validateArgv(int argc, char **argv)
     printf(" -e   Executa programa em modo de codificador (encoder);\n");
     return false;
   }
+}
+
+/**
+* -i [input-file] | -f [format] | -m [metodo] | -o [output-file]
+*/
+int getParametro(int argc, char **argv, char *argumento)
+{
+	int i; // Contador
+
+  for(i = 0; i < argc; i++)
+  {
+		if(strcmp(argv[i], argumento) == 0){
+			return i+1;
+		}
+  }
+
+	return 0;
 }

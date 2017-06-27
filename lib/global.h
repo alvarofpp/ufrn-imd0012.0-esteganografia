@@ -11,6 +11,5 @@ enum ext {extPPM = 1, extBMP};
 */
 int lenPalavra(char *palavra, int i); // Descobrir o tamanho da palavra
 void convertIntForByte(int num);
-#include "global.c"
 
 #endif
