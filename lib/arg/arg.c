@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
+#include <unistd.h>
 
 /**
 * Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes.
@@ -58,6 +60,71 @@ void help()
 **/
 bool validateArgv(int argc, char **argv)
 {
+	int opcao; // Opção passada pelo usuário ao programa.
+	int indice; // Usado para pegar argumentos que não são opções, nem argumentos usados em opções.
+
+  // Desativa todas as opções por default
+	int dflag =  0;
+	int eflag =  0;
+	int hflag =  0;
+	int rflag =  0;
+	int sflag =  0;
+
+  char *farg = NULL;
+  char *iarg = NULL;
+  char *marg = NULL;
+  char *oarg = NULL;
+
+	// Desativa as mensagens de erro da função getopt
+	opterr = 0;
+
+  // Faz um loop pegando as opções passadas pelo usuário.
+  while((opcao = getopt(argc, argv, "dehrsf:i:m:o:")) != -1)
+  {
+    // Verifica o argumento passado e habilita a opção escolhida
+    switch(opcao)
+    {
+      case 'd':
+      dflag = 1;
+      break;
+      case 'e':
+      eflag = 1;
+      break;
+      case 'h':
+      hflag = 1;
+      break;
+      case 'r':
+      rflag = 1;
+      break;
+      case 's':
+      sflag = 1;
+      break;
+      case 'f':
+      farg = optarg;
+      break;
+      case 'i':
+      iarg = optarg;
+      break;
+      case 'm':
+      marg = optarg;
+      break;
+      case 'o':
+      oarg = optarg;
+      break;
+      case '?':
+      if((optopt == 'f') || (optopt == 'i') || (optopt == 'm') || (optopt == 'o'))
+      {
+				fprintf(stderr, "Opção '-%c' requer um argumento seguinte.\n", optopt);
+      } else if(isprint(optopt)) {
+				fprintf(stderr, "Opção '-%c' é desconhecida.\n", optopt);
+			} else {
+				fprintf(stderr, "Caractere '\\x%x' de opção desconhecido.\n", optopt);
+			}
+      return false;
+    }
+
+  }
+
   // Verifica se o primeiro argumento é válido
   if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-e") == 0))
   {
