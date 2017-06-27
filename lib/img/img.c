@@ -218,8 +218,7 @@ bool encodingPPM(char* fileCode, char* fileName)
   FILE* code; // Texto
   FILE* out; // Saída
 
-  unsigned int maskbit = 0x00000001, result1, result2; // Máscara para verificar o último bit e os resultados das operações com os bits
-  char coding[256]; // String para receber a mensagem
+  unsigned int maskbit = 1, result1, result2; // Máscara para verificar o último bit e os resultados das operações com os bits
 
   // Abrir o ponteiro de cada arquivo
   code = fopen(fileCode, "rb");
@@ -232,48 +231,8 @@ bool encodingPPM(char* fileCode, char* fileName)
     fprintf(stderr,"Erro ao abrir um dos arquivos!\n");
     return false;
   }
-
-  // Criando a string de array do tamanho da quantidade de pixels
-  fseek(img, 0, 3);
-	long int tamanhodoarquivo = ftell(img);
-	char texto[tamanhodoarquivo];
-	fseek(img, 11, SEEK_CUR); // A partir do 11º byte que começa o array de pixels
-	fread(texto, sizeof(char), 1, img);
-
-  // Lendo a imagem
-  fread(texto, sizeof(char), 1, img);
-  // Lendo o arquivo txt
-  fseek(code, 0, SEEK_SET);
-  fread(coding, sizeof(char), 1, code);
-
-  int i, j, k; // Contadores
-  // Fazendo as trocas de bits
-  // Percorre a string do code
-  for (i = 0; i < strlen(coding); i++){
-    // Percorre cada bit do char
-    for (j = 8; j >= 0; j--){
-      result1 = maskbit & coding[i];
-      coding[i]&(1 << j) >> j;
-      // Pecorre 8 char para esconder no último o bit de cada bit do segundo for
-      for (k = 0; k < 8 ; k++){
-        result2 = maskbit & texto[k];
-        if (result1 != 0){
-          if (result1 != result2){
-            texto[k] = texto[k] ^ maskbit;
-          }
-        }
-        else {
-          if(result1 != result2)
-          texto[k] = texto[k] | maskbit;
-        }
-      }
-    }
-  }
-
-  // Escrevendo tudo isso na imagem nova
-  fwrite(texto, sizeof(char), 1, out);
-
-  // Fecha os ponteiros
+	
+	// Fecha os ponteiros
   fclose(out);
   fclose(img);
   fclose(code);

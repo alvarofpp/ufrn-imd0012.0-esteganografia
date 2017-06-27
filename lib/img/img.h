@@ -15,11 +15,17 @@ typedef struct {
 } Pixel;
 
 typedef struct {
-  int l; // Linhas
-  int c; // Colunas
+  unsigned int l; // Linhas
+  unsigned int c; // Colunas
   int maxColor; // Máximo de valor de cor
   Pixel **matriz; // Matriz
 } PPM;
+
+typedef struct {
+  unsigned int l;
+  unsigned int c;
+  unsigned char format;
+} PPM6;
 
 /**
 * Funções de manipulação de imagens de modo geral
