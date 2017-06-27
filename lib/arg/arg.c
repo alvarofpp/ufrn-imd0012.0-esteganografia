@@ -69,7 +69,6 @@ bool validateArgv(int argc, char **argv)
 	int hflag =  0;
 	int rflag =  0;
 	int sflag =  0;
-
   char *farg = NULL;
   char *iarg = NULL;
   char *marg = NULL;
@@ -122,8 +121,13 @@ bool validateArgv(int argc, char **argv)
 			}
       return false;
     }
-
   }
+
+  /*
+  * Após verificar se os argumentos são válidos, é verificado se eles podem
+  * ser usados no contexto. Exemplo: O argumento -f não pode ser usado no contexto
+  * de decodificação (-d), portanto a setença é inválida.
+  */
 
   // Verifica se o primeiro argumento é válido
   if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-e") == 0))
@@ -145,7 +149,7 @@ bool validateArgv(int argc, char **argv)
         }
         else
         {
-          printf("Argumento \"%s\" é inválido!\n", argv[i]);
+          printf("Argumento \"%s\" é inválido para decodificação!\n", argv[i]);
           printf("Argumentos aceitos de decodificação: \n");
           printf(" -o [output-file] Indica o arquivo de saída para onde será gravada a mensagem decodificada;\n");
           printf(" -s               Indica que a mensagem decodificada deve ser mostrada na saída padrão.\n");
@@ -171,7 +175,7 @@ bool validateArgv(int argc, char **argv)
         }
         else
         {
-          printf("Argumento \"%s\" é inválido!\n", argv[i]);
+          printf("Argumento \"%s\" é inválido para codificação!\n", argv[i]);
           printf("Argumentos aceitos de codificação: \n");
           printf(" -f [format]      Indica o formato da imagem.\n");
           printf("                  Valores aceitos: bmp e ppm;\n");
