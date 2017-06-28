@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+#include <unistd.h>
+
 /**
 * Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes.
 * Recebe uma variável com a quantidade de argumentos e outra com os argumentos.
@@ -54,6 +60,75 @@ void help()
 **/
 bool validateArgv(int argc, char **argv)
 {
+	int opcao; // Opção passada pelo usuário ao programa.
+	int indice; // Usado para pegar argumentos que não são opções, nem argumentos usados em opções.
+
+  // Desativa todas as opções por default
+	int dflag =  0;
+	int eflag =  0;
+	int hflag =  0;
+	int rflag =  0;
+	int sflag =  0;
+  char *farg = NULL;
+  char *iarg = NULL;
+  char *marg = NULL;
+  char *oarg = NULL;
+
+	// Desativa as mensagens de erro da função getopt
+	opterr = 0;
+
+  // Faz um loop pegando as opções passadas pelo usuário.
+  while((opcao = getopt(argc, argv, "dehrsf:i:m:o:")) != -1)
+  {
+    // Verifica o argumento passado e habilita a opção escolhida
+    switch(opcao)
+    {
+      case 'd':
+      dflag = 1;
+      break;
+      case 'e':
+      eflag = 1;
+      break;
+      case 'h':
+      hflag = 1;
+      break;
+      case 'r':
+      rflag = 1;
+      break;
+      case 's':
+      sflag = 1;
+      break;
+      case 'f':
+      farg = optarg;
+      break;
+      case 'i':
+      iarg = optarg;
+      break;
+      case 'm':
+      marg = optarg;
+      break;
+      case 'o':
+      oarg = optarg;
+      break;
+      case '?':
+      if((optopt == 'f') || (optopt == 'i') || (optopt == 'm') || (optopt == 'o'))
+      {
+				fprintf(stderr, "Opção '-%c' requer um argumento seguinte.\n", optopt);
+      } else if(isprint(optopt)) {
+				fprintf(stderr, "Opção '-%c' é desconhecida.\n", optopt);
+			} else {
+				fprintf(stderr, "Caractere '\\x%x' de opção desconhecido.\n", optopt);
+			}
+      return false;
+    }
+  }
+
+  /*
+  * Após verificar se os argumentos são válidos, é verificado se eles podem
+  * ser usados no contexto. Exemplo: O argumento -f não pode ser usado no contexto
+  * de decodificação (-d), portanto a setença é inválida.
+  */
+
   // Verifica se o primeiro argumento é válido
   if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-e") == 0))
   {
@@ -74,7 +149,7 @@ bool validateArgv(int argc, char **argv)
         }
         else
         {
-          printf("Argumento \"%s\" é inválido!\n", argv[i]);
+          printf("Argumento \"%s\" é inválido para decodificação!\n", argv[i]);
           printf("Argumentos aceitos de decodificação: \n");
           printf(" -o [output-file] Indica o arquivo de saída para onde será gravada a mensagem decodificada;\n");
           printf(" -s               Indica que a mensagem decodificada deve ser mostrada na saída padrão.\n");
@@ -100,7 +175,7 @@ bool validateArgv(int argc, char **argv)
         }
         else
         {
-          printf("Argumento \"%s\" é inválido!\n", argv[i]);
+          printf("Argumento \"%s\" é inválido para codificação!\n", argv[i]);
           printf("Argumentos aceitos de codificação: \n");
           printf(" -f [format]      Indica o formato da imagem.\n");
           printf("                  Valores aceitos: bmp e ppm;\n");
@@ -122,4 +197,21 @@ bool validateArgv(int argc, char **argv)
     printf(" -e   Executa programa em modo de codificador (encoder);\n");
     return false;
   }
+}
+
+/**
+* -i [input-file] | -f [format] | -m [metodo] | -o [output-file]
+*/
+int getParametro(int argc, char **argv, char *argumento)
+{
+	int i; // Contador
+
+  for(i = 0; i < argc; i++)
+  {
+		if(strcmp(argv[i], argumento) == 0){
+			return i+1;
+		}
+  }
+
+	return 0;
 }

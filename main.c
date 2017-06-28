@@ -10,8 +10,6 @@ int main(int argc, char **argv)
 {
 	printArgv(argc, argv); // Mostrar os argumentos passados
 
-	convertIntForByte(254);
-
 	// Verifica se a função help() foi chamada ou se nenhum argumento foi passado
 	if((argc == 1) || (strcmp(argv[1], "-h") == 0) || (strcmp(argv[1], "--help") == 0))
 	{
@@ -41,18 +39,6 @@ int main(int argc, char **argv)
 					encodingPPM(argv[input], argv[argc-1]);
 				break;
 				case extBMP:
-				/*
-					// Variáveis usadas
-					BMPFileHeader fileheader;
-					BMPInfoHeader infoheader;
-
-					// Codificação de BMP
-					readBitmapHeaders(argv[argc-1], &fileheader, &infoheader);
-					verification(&fileheader, &infoheader);
-					int input = getParametro(argc, argv, "-i"); // Arquivo com o texto
-					int output = getParametro(argc, argv, "-o"); // Arquivo de saída
-					encodingBMP(argv[input], argv[argc-1], &fileheader, &infoheader);
-					*/
 				break;
 			}
 		}
