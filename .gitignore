@@ -3,7 +3,7 @@ CMakeLists.txt
 cmake-build-debug/
 .idea/
 teste.*
+codificado.*
 trabalho.zip
 steg
 build/*
-*.ppm

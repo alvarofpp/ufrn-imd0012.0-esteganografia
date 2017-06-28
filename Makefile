@@ -3,6 +3,13 @@
 main:		img.o arg.o global.o main.o
 		# O compilador faz a ligação entre os dois objetos
 		gcc build/*.o -o steg
+# Testes
+test:
+		./steg
+		./steg -e
+		./steg -e -i code.txt image/imgp3.ppm
+		./steg -e -i code.txt image/imgp6.ppm
+		./steg -e -i code.txt image/BMP.bmp
 # Arquivos
 img.o:		lib/img/*
 		gcc -c lib/img/img.c -o build/img.o

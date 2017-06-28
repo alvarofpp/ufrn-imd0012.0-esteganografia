@@ -5,24 +5,6 @@
 #include <unistd.h>
 
 /**
-* Mostrar os argumentos inseridos pelo terminal. Usados apenas para testes.
-* Recebe uma variável com a quantidade de argumentos e outra com os argumentos.
-**/
-void printArgv(int argc, char **argv)
-{
-  int i; // Contador
-  printf("ARGC: %d\n", argc);
-
-  // Percorre os argumentos
-  for(i = 0; i < argc; i++)
-  {
-    printf("ARGV[%d] = %s\n", i, argv[i]);
-  }
-
-  printf("\n");
-}
-
-/**
 * Função para mostrar mensagem de ajuda.
 **/
 void help()

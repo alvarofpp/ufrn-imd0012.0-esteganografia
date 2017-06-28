@@ -1,4 +1,3 @@
-#include <stdio.h>
 
 /**
 * Descobrir o tamanho da palavra.

@@ -3,11 +3,12 @@
 Gabriel Ribeiro Moura da Costa (20170002032)
 
 -> Como executar o código
-.Compilação: gcc main.c
-.Execução: ./a.out [argumentos]
-.Exemplo: ./a.out -e -i code.txt image/imgp3.ppm
+.Compilação: make
+.Execução: ./steg [argumentos]
+.Exemplo: ./steg -e -i code.txt image/imgp3.ppm
 
 -> Arquivos
+- Makefile - Executar o programa make e compilar corretamente o projeto
 - main.c - Arquivo principal
 - lib/ - Contêm as bibliotecas de código desenvolvidas para o projeto
   - arg/ - Funções e variáveis referentes a validação dos argumentos passados
@@ -20,6 +21,28 @@ Gabriel Ribeiro Moura da Costa (20170002032)
   - global.c - Funções globais
 - image/ - Contêm as imagens que foram usadas para testes nesse trabalho
 - build/ - Necessário para a compilação do projeto
+
+========== PROJETO FINAL ==========
+O sistema não foi concluído, porém ainda possui algumas funções que são listadas abaixo:
+.Validação dos argumentos
+    O sistema valida todos os argumentos passados (argumentos inexistentes e
+    paramêtros não passados) e seu contexto (argumentos de decodificação não
+    funcionam nos de codificação, vice-versa).
+.Validação da imagem
+    O sistema verifica se a imagem passada é válida para a correta execução
+    do programa (tamanho do nome, extensão, etc).
+.Leitura de arquivos PPM e BMP
+    O sistema consegue ler os arquivos para fins de replicação ou tarefas semelhantes.
+
+Para realizar os testes, basta executar no terminal "make test". Porém, antes de executar,
+vá no Makefile e coloque como último argumento nas linhas 10, 11 e 12 as imagens
+que está usando.
+
+Para ter-se uma idéia melhor sobre como decorreu o projeto, acesse o repositório dele no GitHub:
+https://github.com/alvarofpp/esteganografia_c
+
+========== CHECKPOINT 4 ==========
+Nada foi feito.
 
 ========== CHECKPOINT 3 ==========
 -> Grupo
