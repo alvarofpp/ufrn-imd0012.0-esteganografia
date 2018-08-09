@@ -1,5 +1,15 @@
-# esteganografia_c
-Realizar esteganografia em linguagem C. Projeto da matéria de Introdução as Técnias de Programação, 2017.1, IMD - UFRN.
+# esteganografia-c
+Projeto da disciplina **Introdução as Técnicas de Programação** (IMD0012.0, T01, 2017.1), ministrada pelo professor [Rafael Beserra Gomes](https://github.com/rafaelbes).
+
+Realizar esteganografia utilizando a linguagem C.
+
+**Discentes**:
+- <a href="https://github.com/alvarofpp">Álvaro Ferreira Pires de Paiva</a>
+  - Matrícula: 2016039162
+  - E-mail: alvarofepipa@gmail.com
+- <a href="https://github.com/Bib7">Gabriel Ribeiro Moura da Costa</a>
+  - Matrícula: 20170002032
+  - E-mail: gmourafilho94@hotmail.com
 
 ## Arquivos
 - main.c - Arquivo principal
